@@ -1,8 +1,9 @@
 import ArticleCard from "./ArticleCard"
 import { useState, useEffect } from "react"
+import { Link } from "react-router"
 import axios from "axios"
 
-function ArticlesList() {
+function ArticlesList({setArticleId}) {
     const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
@@ -24,7 +25,7 @@ function ArticlesList() {
     return <>
         <div className="articles-list">
             <ul>{articles.map((article) => {
-                return <ArticleCard article={article} key={article.article_id}/>
+                return <ArticleCard article={article} setArticleId={setArticleId} key={article.article_id}/>
             })}
             </ul>
         </div>
