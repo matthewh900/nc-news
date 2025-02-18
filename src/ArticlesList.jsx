@@ -4,12 +4,22 @@ import axios from "axios"
 
 function ArticlesList() {
     const [articles, setArticles] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         axios.get("https://be-nc-news-mh.onrender.com/api/articles").then((res) => {
             setArticles(res.data.article)
+        }).catch((err) => {
+            setError(true)
+        }).finally(() => {
+            setLoading(false)
         })
     }, [])
+
+    if(loading) return <p>Loading...</p>
+    if(error) return <p>Sorry, something went wrong</p>
 
     return <>
         <div className="articles-list">
