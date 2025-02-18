@@ -1,6 +1,6 @@
 function Header() {
     return <>
-        <h1>NC News</h1>
+        <h1 className="header">NC News</h1>
     </>
 }
 
