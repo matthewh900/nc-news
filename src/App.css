@@ -85,3 +85,23 @@ img {
 .date-created {
   font-size: 0.8em;
 }
+
+.comment-section {
+  padding: 1rem;
+  background-color: #B5FFE1;
+}
+
+.comment-author {
+  font-size: 1.25em;
+  font-weight: 700;
+  text-align: left;
+}
+
+.comment-body {
+  text-align: left;
+}
+
+.comment-votes, .up-vote, .down-vote {
+  display: inline-block;
+  margin: 1rem;
+}

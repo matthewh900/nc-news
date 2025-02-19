@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import axios from "axios";
 import CommentSection from "./CommentSection";
 
 function ArticlePage({ articleId }) {
   const [chosenArticle, setChosenArticle] = useState({});
+  const [isVisible, setIsVisible] = useState(false)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -38,14 +39,14 @@ function ArticlePage({ articleId }) {
           />
           <p className="article-body">{chosenArticle.body}</p>
           <button className="votes-button">Votes: {chosenArticle.votes}</button>
-          <button className="comment-button">
+          <button className="comment-button" onClick={() => {setIsVisible(!isVisible)}}>
             Comments: {chosenArticle.comment_count}
           </button>
         </div>
       </div>
-      <div className="comment-section">
+      {isVisible ? <div className="comment-section">
         <CommentSection articleId={articleId}/>
-      </div>
+      </div> : null}
     </>
   );
 }
