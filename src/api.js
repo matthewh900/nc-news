@@ -17,3 +17,7 @@ export const getComments = ({articleId}) => {
         return res.data.comments
     })
 }
+
+export const patchArticleVotes = ({articleId}) => {
+    return axios.patch(`https://be-nc-news-mh.onrender.com/api/articles/${articleId}`, {inc_votes: 1})
+}

@@ -1,11 +1,12 @@
 import { use, useEffect, useState } from "react";
 import axios from "axios";
 import CommentSection from "./CommentSection";
-import { getArticleById } from "./api";
+import { getArticleById, patchArticleVotes } from "./api";
 
 function ArticlePage({ articleId }) {
   const [chosenArticle, setChosenArticle] = useState({});
   const [isVisible, setIsVisible] = useState(false)
+  const [currVotes, setCurrVotes] = useState(0)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -23,6 +24,11 @@ function ArticlePage({ articleId }) {
       });
   }, []);
 
+  function handleVotes() {
+    setCurrVotes(currVotes + 1)
+    patchArticleVotes({articleId})
+  }
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Sorry, something went wrong</p>;
 
@@ -38,7 +44,7 @@ function ArticlePage({ articleId }) {
             alt="image relating to article"
           />
           <p className="article-body">{chosenArticle.body}</p>
-          <button className="votes-button">Votes: {chosenArticle.votes}</button>
+          <button className="votes-button" onClick={handleVotes}>Votes: {currVotes + chosenArticle.votes}</button>
           <button className="comment-button" onClick={() => {setIsVisible(!isVisible)}}>
             Comments: {chosenArticle.comment_count}
           </button>
