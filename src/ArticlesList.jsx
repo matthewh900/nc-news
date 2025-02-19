@@ -23,7 +23,7 @@ function ArticlesList({setArticleId}) {
     if(error) return <p>Sorry, something went wrong</p>
 
     return <>
-        <div className="articles-list">
+        <div className="articles-container">
             <ul>{articles.map((article) => {
                 return <ArticleCard article={article} setArticleId={setArticleId} key={article.article_id}/>
             })}
