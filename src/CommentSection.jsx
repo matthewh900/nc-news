@@ -23,11 +23,17 @@ function CommentSection({articleId}) {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Sorry, something went wrong</p>;
 
-    return <ul>
+    return <>
+    <form className="write-comment">
+        <textarea className="comment-input" placeholder="Type comment here"></textarea>
+        <input type="submit"></input>
+    </form>
+    <ul>
     {comments.map((comment) => {
         return <CommentCard comment={comment} key={comment.comment_id}/>
     })}
     </ul>
+    </>
 }
 
 export default CommentSection
