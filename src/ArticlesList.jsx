@@ -2,6 +2,7 @@ import ArticleCard from "./ArticleCard"
 import { useState, useEffect } from "react"
 import { Link } from "react-router"
 import axios from "axios"
+import { getArticles } from "./api"
 
 function ArticlesList({setArticleId}) {
     const [articles, setArticles] = useState([])
@@ -10,8 +11,8 @@ function ArticlesList({setArticleId}) {
 
     useEffect(() => {
         setLoading(true)
-        axios.get("https://be-nc-news-mh.onrender.com/api/articles").then((res) => {
-            setArticles(res.data.article)
+        getArticles().then((articles) => {
+            setArticles(articles)
         }).catch((err) => {
             setError(true)
         }).finally(() => {

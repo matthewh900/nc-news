@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
 import axios from "axios"
 import CommentCard from "./CommentCard";
+import { getComments } from "./api";
 
 function CommentSection({articleId}) {
     const [comments, setComments] = useState([])
@@ -9,8 +10,9 @@ function CommentSection({articleId}) {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`https://be-nc-news-mh.onrender.com/api/articles/${articleId}/comments`).then((res) => {
-            setComments(res.data.comments)
+        getComments({articleId})
+        .then((articlesComments) => {
+            setComments(articlesComments)
         }).catch((err) => {
             setError(true)
         }).finally(() => {

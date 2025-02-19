@@ -1,6 +1,7 @@
 import { use, useEffect, useState } from "react";
 import axios from "axios";
 import CommentSection from "./CommentSection";
+import { getArticleById } from "./api";
 
 function ArticlePage({ articleId }) {
   const [chosenArticle, setChosenArticle] = useState({});
@@ -10,10 +11,9 @@ function ArticlePage({ articleId }) {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`https://be-nc-news-mh.onrender.com/api/articles/${articleId}`)
-      .then((res) => {
-        setChosenArticle(res.data.article);
+    getArticleById({articleId})
+      .then((article) => {
+        setChosenArticle(article);
       })
       .catch((err) => {
         setError(true);
