@@ -1,9 +1,11 @@
 import {useState, useEffect} from "react"
 import axios from "axios"
+import { useParams } from "react-router-dom";
 import CommentCard from "./CommentCard";
 import { getComments, postComment } from "./api";
 
-function CommentSection({articleId}) {
+function CommentSection() {
+    const {articleId} = useParams()
     const [comments, setComments] = useState([])
     const [newComment, setNewComment] = useState("")
     const [commentPosted, setCommentPosted] = useState(true)
@@ -45,7 +47,7 @@ function CommentSection({articleId}) {
     </form>
     <ul>
     {comments.map((comment) => {
-        return <CommentCard comment={comment} key={comment.comment_id}/>
+        return <CommentCard comment={comment} setComments={setComments} comments={comments} key={comment.comment_id}/>
     })}
     </ul>
     </>

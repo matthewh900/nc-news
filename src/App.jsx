@@ -14,7 +14,7 @@ function App() {
         <Header/>
         <Routes>
           <Route path='/' element={<ArticlesList setArticleId={setArticleId}/>}></Route>
-          <Route path='/article-page' element={<ArticlePage articleId={articleId}/>}></Route>
+          <Route path='/article-page/:articleId' element={<ArticlePage/>}></Route>
         </Routes>
         <Navbar/>
     </>
