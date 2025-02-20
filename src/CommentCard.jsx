@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { deleteComment } from "./api";
 
-function CommentCard({ comment }) {
+function CommentCard({ comment, setDeleted }) {
   const [commentId, setCommentId] = useState(null);
-  const [deleted, setDeleted] = useState(false);
   // const [deletable, setDeletable] = useState(false)
 
   // {if(comment.author === "weegembump"){

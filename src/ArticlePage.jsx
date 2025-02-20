@@ -1,9 +1,11 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import {useParams} from "react-router-dom"
 import axios from "axios";
 import CommentSection from "./CommentSection";
 import { getArticleById, patchArticleVotes } from "./api";
 
-function ArticlePage({ articleId }) {
+function ArticlePage() {
+  const {articleId} = useParams()
   const [chosenArticle, setChosenArticle] = useState({});
   const [isVisible, setIsVisible] = useState(false)
   const [currVotes, setCurrVotes] = useState(0)
@@ -51,7 +53,7 @@ function ArticlePage({ articleId }) {
         </div>
       </div>
       {isVisible ? <div className="comment-section">
-        <CommentSection articleId={articleId}/>
+        <CommentSection/>
       </div> : null}
     </>
   );
