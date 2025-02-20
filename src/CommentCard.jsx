@@ -3,14 +3,13 @@ import { deleteComment } from "./api";
 
 function CommentCard({ comment, setComments, comments }) {
   const [commentId, setCommentId] = useState(null);
-  // const [deletable, setDeletable] = useState(false)
-
-  // {if(comment.author === "weegembump"){
-  //     setCommentId(comment.comment_id)
-  // }}
+  const [deletable, setDeletable] = useState(false)
 
   useEffect(() => {
-    setCommentId(comment.comment_id);
+    {if(comment.author === "weegembump"){
+        setCommentId(comment.comment_id)
+        setDeletable(true)
+    }}
   }, []);
 
   return (
@@ -20,7 +19,7 @@ function CommentCard({ comment, setComments, comments }) {
       <button className="up-vote">▲</button>
       <p className="comment-votes">Votes: {comment.votes}</p>
       <button className="down-vote">▼</button>
-      <button
+      {deletable ? <button
         className="delete-button"
         onClick={() => {
           setComments(comments.filter((thisComment) => thisComment.comment_id !== commentId));
@@ -28,7 +27,7 @@ function CommentCard({ comment, setComments, comments }) {
         }}
       >
         🗑️
-      </button>
+      </button> : null}
     </div>
   );
 }
