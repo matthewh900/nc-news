@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { deleteComment } from "./api";
 
-function CommentCard({ comment, setDeleted }) {
+function CommentCard({ comment, setComments, comments }) {
   const [commentId, setCommentId] = useState(null);
   // const [deletable, setDeletable] = useState(false)
 
@@ -23,7 +23,7 @@ function CommentCard({ comment, setDeleted }) {
       <button
         className="delete-button"
         onClick={() => {
-          setDeleted(true);
+          setComments(comments.filter((thisComment) => thisComment.comment_id !== commentId));
           deleteComment({ commentId });
         }}
       >

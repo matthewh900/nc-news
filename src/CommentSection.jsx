@@ -9,7 +9,6 @@ function CommentSection() {
     const [comments, setComments] = useState([])
     const [newComment, setNewComment] = useState("")
     const [commentPosted, setCommentPosted] = useState(true)
-    const [deleted, setDeleted] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -23,7 +22,7 @@ function CommentSection() {
         }).finally(() => {
             setLoading(false)
         })
-    }, [commentPosted, deleted])
+    }, [commentPosted])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -48,7 +47,7 @@ function CommentSection() {
     </form>
     <ul>
     {comments.map((comment) => {
-        return <CommentCard comment={comment} setDeleted={setDeleted} key={comment.comment_id}/>
+        return <CommentCard comment={comment} setComments={setComments} comments={comments} key={comment.comment_id}/>
     })}
     </ul>
     </>
