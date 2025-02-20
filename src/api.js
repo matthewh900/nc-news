@@ -25,3 +25,7 @@ export const patchArticleVotes = ({articleId}) => {
 export const postComment = ({articleId, newComment}) => {
     return axios.post(`https://be-nc-news-mh.onrender.com/api/articles/${articleId}/comments`, {author: "weegembump", body: newComment})
 }
+
+export const deleteComment = ({commentId}) => {
+    return axios.delete(`https://be-nc-news-mh.onrender.com/api/comments/${commentId}`)
+}
