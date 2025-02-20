@@ -21,3 +21,7 @@ export const getComments = ({articleId}) => {
 export const patchArticleVotes = ({articleId}) => {
     return axios.patch(`https://be-nc-news-mh.onrender.com/api/articles/${articleId}`, {inc_votes: 1})
 }
+
+export const postComment = ({articleId, newComment}) => {
+    return axios.post(`https://be-nc-news-mh.onrender.com/api/articles/${articleId}/comments`, {author: "weegembump", body: newComment})
+}
