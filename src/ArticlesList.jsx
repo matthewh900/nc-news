@@ -4,21 +4,21 @@ import { Link } from "react-router"
 import axios from "axios"
 import { getArticles } from "./api"
 
-function ArticlesList({setArticleId}) {
+function ArticlesList({setArticleId, topicQuery}) {
     const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
 
     useEffect(() => {
         setLoading(true)
-        getArticles().then((articles) => {
+        getArticles({topicQuery}).then((articles) => {
             setArticles(articles)
         }).catch((err) => {
             setError(true)
         }).finally(() => {
             setLoading(false)
         })
-    }, [])
+    }, [topicQuery])
 
     if(loading) return <p>Loading...</p>
     if(error) return <p>Sorry, something went wrong</p>
@@ -26,7 +26,7 @@ function ArticlesList({setArticleId}) {
     return <>
         <div className="articles-container">
             <ul>{articles.map((article) => {
-                return <ArticleCard article={article} setArticleId={setArticleId} key={article.article_id}/>
+                return <ArticleCard article={article} key={article.article_id}/>
             })}
             </ul>
         </div>

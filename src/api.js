@@ -1,7 +1,13 @@
 import axios from "axios"
 
-export const getArticles = () => {
-    return axios.get("https://be-nc-news-mh.onrender.com/api/articles").then((res) => {
+export const getArticles = ({topicQuery}) => {
+    return axios.get("https://be-nc-news-mh.onrender.com/api/articles", {params: {topic: topicQuery}}).then((res) => {
+        return res.data.article
+    })
+}
+
+export const getUsersArticles = () => {
+    return axios.get("https://be-nc-news-mh.onrender.com/api/articles?author=weegembump").then((res) => {
         return res.data.article
     })
 }
@@ -28,4 +34,16 @@ export const postComment = ({articleId, newComment}) => {
 
 export const deleteComment = ({commentId}) => {
     return axios.delete(`https://be-nc-news-mh.onrender.com/api/comments/${commentId}`)
+}
+
+export const getTopics = () => {
+    return axios.get("https://be-nc-news-mh.onrender.com/api/topics").then((res) => {
+        return res.data.topic
+    })
+}
+
+export const getUsers = () => {
+    return axios.get("https://be-nc-news-mh.onrender.com/api/users").then((res) => {
+        return res.data.user
+    })
 }

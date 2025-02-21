@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-function ArticleCard({article, setArticleId}) {
+function ArticleCard({article}) {
     return <>
     <div className="article-card">
         <p className="article-title">{article.title}</p>

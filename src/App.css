@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-.articles-container {
+.articles-container, .topics-container {
   padding: 1rem;
   background-color: #B5FFE1;
   height: 60rem;
@@ -114,4 +114,37 @@ img {
   border: 2px solid #ccc;
   border-radius: 4px;
   resize: none;
+}
+
+.topics-container {
+  display: -moz-grid;
+  height: fit-content;
+}
+
+.topic-button {
+  background-color: #4E878C;
+  color: white;
+  padding: 3rem;
+  margin: 2rem;
+  text-align: center;
+  font-size: 16px;
+}
+
+.user-card {
+  display: flexbox;
+  color: black;
+  border: 3px solid #4E878C;
+  margin: 1rem;
+  background-color: #B5FFE1;
+}
+
+.profile-picture {
+  border: 3px solid #4E878C;
+  padding: 0rem;
+  width: 10em
+}
+
+.username {
+  font-size: 1.25em;
+  font-weight: 700;
 }
