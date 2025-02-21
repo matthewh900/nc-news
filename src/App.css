@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-.articles-container {
+.articles-container, .topics-container {
   padding: 1rem;
   background-color: #B5FFE1;
   height: 60rem;
@@ -114,4 +114,18 @@ img {
   border: 2px solid #ccc;
   border-radius: 4px;
   resize: none;
+}
+
+.topics-container {
+  display: -moz-grid;
+  height: fit-content;
+}
+
+.topic-button {
+  background-color: #4E878C;
+  color: white;
+  padding: 3rem;
+  margin: 2rem;
+  text-align: center;
+  font-size: 16px;
 }

@@ -29,3 +29,9 @@ export const postComment = ({articleId, newComment}) => {
 export const deleteComment = ({commentId}) => {
     return axios.delete(`https://be-nc-news-mh.onrender.com/api/comments/${commentId}`)
 }
+
+export const getTopics = () => {
+    return axios.get("https://be-nc-news-mh.onrender.com/api/topics").then((res) => {
+        return res.data.topic
+    })
+}

@@ -5,6 +5,7 @@ import Header from './Header'
 import Navbar from './Navbar'
 import ArticlesList from './ArticlesList'
 import ArticlePage from './ArticlePage'
+import TopicPage from './TopicPage'
 
 function App() {
   const [articleId, setArticleId] = useState(null)
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<ArticlesList setArticleId={setArticleId}/>}></Route>
           <Route path='/article-page/:articleId' element={<ArticlePage/>}></Route>
+          <Route path='/topics' element={<TopicPage/>}></Route>
         </Routes>
         <Navbar/>
     </>
