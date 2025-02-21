@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react"
-import axios from "axios"
 import { useParams } from "react-router-dom";
 import CommentCard from "./CommentCard";
 import { getComments, postComment } from "./api";

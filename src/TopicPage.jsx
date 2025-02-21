@@ -26,7 +26,7 @@ function TopicPage({setTopicQuery}) {
     <div className="topics-container">
         {topics.map((topic) => {
             return <button className="topic-button" key={topic.slug} onClick={() => {setTopicQuery(`${topic.slug}`)
-                navigate("/")
+                navigate("/articles")
             }}>{topic.slug}: {topic.description}</button>
         })}
     </div>
