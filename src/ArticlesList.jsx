@@ -26,7 +26,7 @@ function ArticlesList({setArticleId, topicQuery}) {
     return <>
         <div className="articles-container">
             <ul>{articles.map((article) => {
-                return <ArticleCard article={article} setArticleId={setArticleId} key={article.article_id}/>
+                return <ArticleCard article={article} key={article.article_id}/>
             })}
             </ul>
         </div>

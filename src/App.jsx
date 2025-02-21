@@ -16,7 +16,8 @@ function App() {
     <>
         <Header/>
         <Routes>
-          <Route path='/' element={<ArticlesList setArticleId={setArticleId} topicQuery={topicQuery}/>}></Route>
+          <Route path='/' element={<Homepage/>}></Route>
+          <Route path='/articles' element={<ArticlesList setArticleId={setArticleId} topicQuery={topicQuery}/>}></Route>
           <Route path='/article-page/:articleId' element={<ArticlePage/>}></Route>
           <Route path='/topics' element={<TopicPage setTopicQuery={setTopicQuery}/>}></Route>
         </Routes>

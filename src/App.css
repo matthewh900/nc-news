@@ -129,3 +129,22 @@ img {
   text-align: center;
   font-size: 16px;
 }
+
+.user-card {
+  display: flexbox;
+  color: black;
+  border: 3px solid #4E878C;
+  margin: 1rem;
+  background-color: #B5FFE1;
+}
+
+.profile-picture {
+  border: 3px solid #4E878C;
+  padding: 0rem;
+  width: 10em
+}
+
+.username {
+  font-size: 1.25em;
+  font-weight: 700;
+}

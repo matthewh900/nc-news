@@ -6,6 +6,12 @@ export const getArticles = ({topicQuery}) => {
     })
 }
 
+export const getUsersArticles = () => {
+    return axios.get("https://be-nc-news-mh.onrender.com/api/articles?author=weegembump").then((res) => {
+        return res.data.article
+    })
+}
+
 export const getArticleById = ({articleId}) => {
     return axios.get(`https://be-nc-news-mh.onrender.com/api/articles/${articleId}`).then((res) => {
         return res.data.article
@@ -33,5 +39,11 @@ export const deleteComment = ({commentId}) => {
 export const getTopics = () => {
     return axios.get("https://be-nc-news-mh.onrender.com/api/topics").then((res) => {
         return res.data.topic
+    })
+}
+
+export const getUsers = () => {
+    return axios.get("https://be-nc-news-mh.onrender.com/api/users").then((res) => {
+        return res.data.user
     })
 }
