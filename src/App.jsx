@@ -6,17 +6,19 @@ import Navbar from './Navbar'
 import ArticlesList from './ArticlesList'
 import ArticlePage from './ArticlePage'
 import TopicPage from './TopicPage'
+import Homepage from './Homepage'
 
 function App() {
   const [articleId, setArticleId] = useState(null)
+  const [topicQuery, setTopicQuery] = useState(null)
 
   return (
     <>
         <Header/>
         <Routes>
-          <Route path='/' element={<ArticlesList setArticleId={setArticleId}/>}></Route>
+          <Route path='/' element={<ArticlesList setArticleId={setArticleId} topicQuery={topicQuery}/>}></Route>
           <Route path='/article-page/:articleId' element={<ArticlePage/>}></Route>
-          <Route path='/topics' element={<TopicPage/>}></Route>
+          <Route path='/topics' element={<TopicPage setTopicQuery={setTopicQuery}/>}></Route>
         </Routes>
         <Navbar/>
     </>

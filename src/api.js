@@ -1,7 +1,7 @@
 import axios from "axios"
 
-export const getArticles = () => {
-    return axios.get("https://be-nc-news-mh.onrender.com/api/articles").then((res) => {
+export const getArticles = ({topicQuery}) => {
+    return axios.get("https://be-nc-news-mh.onrender.com/api/articles", {params: {topic: topicQuery}}).then((res) => {
         return res.data.article
     })
 }

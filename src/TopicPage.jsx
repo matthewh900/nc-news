@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { getTopics } from "./api"
 
-function TopicPage() {
+function TopicPage({setTopicQuery}) {
+    const navigate = useNavigate()
     const [topics, setTopics] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
@@ -23,7 +25,9 @@ function TopicPage() {
     return <>
     <div className="topics-container">
         {topics.map((topic) => {
-            return <button className="topic-button" key={topic.slug}>{topic.slug}: {topic.description}</button>
+            return <button className="topic-button" key={topic.slug} onClick={() => {setTopicQuery(`${topic.slug}`)
+                navigate("/")
+            }}>{topic.slug}: {topic.description}</button>
         })}
     </div>
     </>
