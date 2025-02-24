@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"
 
-function SortingPage({setSortQuery, setOrderQuery}) {
-  const navigate = useNavigate()
-    const [sortValue, setSortValue] = useState("")
-    const [orderValue, setOrderValue] = useState("")
+function SortingPage({setSortQuery, setOrderQuery, submit, setSubmit}) {
+    // const [sortValue, setSortValue] = useState("")
+    // const [orderValue, setOrderValue] = useState("")
 
     function handleSubmit(e) {
         e.preventDefault()
-        setSortQuery(sortValue)
-        setOrderQuery(orderValue)
-        navigate("/articles")
+        // setSortQuery(sortValue)
+        // setOrderQuery(orderValue)
+        setSubmit(!submit)
     }
 
   return (
@@ -18,7 +16,7 @@ function SortingPage({setSortQuery, setOrderQuery}) {
       <select
         className="sort-select"
         id="sort-select"
-        onChange={(e) => setSortValue(e.target.value)}
+        onChange={(e) => setSortQuery(e.target.value)}
       >
         <option value=""></option>
         <option value="created_at">Date</option>
@@ -28,7 +26,7 @@ function SortingPage({setSortQuery, setOrderQuery}) {
       <select
         className="order"
         id="order"
-        onChange={(e) => setOrderValue(e.target.value)}
+        onChange={(e) => setOrderQuery(e.target.value)}
       >
         <option value=""></option>
         <option value="asc">Ascending</option>

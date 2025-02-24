@@ -1,13 +1,29 @@
 import ArticleCard from "./ArticleCard"
+import SortingPage from "./SortingPage"
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { getArticles } from "./api"
 
-function ArticlesList({topicQuery, sortQuery, orderQuery}) {
-    const navigate = useNavigate()
+function ArticlesList({topicQuery}) {
     const [articles, setArticles] = useState([])
+    const [searchParams, setSearchParams] = useSearchParams()
+    const sortQuery = searchParams.get("sort_by")
+    const orderQuery = searchParams.get("order")
+    const [submit, setSubmit] = useState(false)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
+
+    const setOrderQuery = (direction) => {
+        const newParams = new URLSearchParams(searchParams);
+        newParams.set("order", direction);
+        setSearchParams(newParams);
+    }
+
+    const setSortQuery = (category) => {
+        const newParams = new URLSearchParams(searchParams);
+        newParams.set("sort_by", category);
+        setSearchParams(newParams);
+    }
 
     useEffect(() => {
         setLoading(true)
@@ -18,14 +34,16 @@ function ArticlesList({topicQuery, sortQuery, orderQuery}) {
         }).finally(() => {
             setLoading(false)
         })
-    }, [topicQuery, sortQuery, orderQuery])
+    }, [topicQuery, submit])
 
     if(loading) return <p>Loading...</p>
     if(error) return <p>Sorry, something went wrong</p>
 
     return <>
         <div className="articles-container">
-            <button className="sort-page-button" onClick={() => navigate("/sort-page")}>Sort By</button>
+            <div className="sort-area">
+                <SortingPage setOrderQuery={setOrderQuery} setSortQuery={setSortQuery} submit={submit} setSubmit={setSubmit}/>
+            </div>
             <ul>{articles.map((article) => {
                 return <ArticleCard article={article} key={article.article_id}/>
             })}
