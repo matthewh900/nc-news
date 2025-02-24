@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import { getArticles } from "./api"
 
-function ArticlesList({topicQuery}) {
+function ArticlesList({topicQuery, setTopicQuery}) {
     const [articles, setArticles] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
     const sortQuery = searchParams.get("sort_by")
@@ -42,7 +42,7 @@ function ArticlesList({topicQuery}) {
     return <>
         <div className="articles-container">
             <div className="sort-area">
-                <SortingPage setOrderQuery={setOrderQuery} setSortQuery={setSortQuery} submit={submit} setSubmit={setSubmit}/>
+                <SortingPage setOrderQuery={setOrderQuery} setSortQuery={setSortQuery} setTopicQuery={setTopicQuery} submit={submit} setSubmit={setSubmit}/>
             </div>
             <ul>{articles.map((article) => {
                 return <ArticleCard article={article} key={article.article_id}/>

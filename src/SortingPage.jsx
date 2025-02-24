@@ -1,13 +1,10 @@
 import { useState } from "react";
 
-function SortingPage({setSortQuery, setOrderQuery, submit, setSubmit}) {
-    // const [sortValue, setSortValue] = useState("")
-    // const [orderValue, setOrderValue] = useState("")
+function SortingPage({setSortQuery, setOrderQuery, submit, setSubmit, setTopicQuery}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        // setSortQuery(sortValue)
-        // setOrderQuery(orderValue)
+        setTopicQuery(null)
         setSubmit(!submit)
     }
 
