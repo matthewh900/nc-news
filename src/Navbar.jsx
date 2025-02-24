@@ -10,7 +10,6 @@ function Navbar() {
         <Link to="/topics">
           <button>Topics</button>
         </Link>
-        <button>Create</button>
         <Link to="/">
           <button>Home</button>
         </Link>
